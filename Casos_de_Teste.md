@@ -96,3 +96,68 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Pré-condições** | * O usuário deve estar logado. <br> * O jogo **"Street Fighter"** deve existir no catálogo, mas **NÃO** deve ter sido comprado pelo usuário de teste. |
 | **Passos** | 1. O usuário acessa a página da Biblioteca do Usuário. <br> 2. O usuário utiliza a barra de busca da biblioteca para procurar por **"Street Fighter"**. <br> |
 | **Resultado Esperado** | Deve ser exibida uma mensagem chamativa, como **"Parece que este jogo ainda não é seu! Adquira 'Street Fighter' na loja."** junto a um **link/botão** que direcione para a página de detalhes do jogo no Catálogo. |
+
+
+### TC-LIB-004: Desinstalação de Jogo
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica se o usuário consegue desinstalar um jogo previamente instalado e se o sistema atualiza corretamente o status do jogo na biblioteca.|
+| **Entrada** | **"Street Fighter"** (Ação de Desinstalar)|
+| **Pré-condições** | * O usuário deve estar logado. <br> * O jogo "Street Fighter" deve constar na biblioteca do usuário. <br> * O jogo deve estar atualmente com o status "Instalado" na máquina. |
+| **Passos** | 1. O usuário acessa a página da Biblioteca do Usuário. <br>  2. O usuário localiza e seleciona o jogo "Street Fighter".<br>  3. O usuário clica na opção/botão "Desinstalar". <br>  4. O usuário confirma a ação na janela de aviso. <br> |
+| **Resultado Esperado** | O jogo deve ser removido da máquina, e na biblioteca o status deve ser atualizado para “Não instalado”, exibindo um botão como “Instalar novamente”. Uma mensagem de feedback deve aparecer informando "O jogo foi desinstalado com sucesso."|
+
+---                                                                                        
+## 👤 Módulo: Conta do Usuário (USR)
+
+### TC-USR-001: Criar Nova Conta
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica se um novo usuário consegue criar uma conta no sistema com dados válidos.|
+| **Entrada** | Nome: Matheus <br> E-mail: matheus@email.com <br> Senha: Teste@123|
+| **Pré-condições** | * O usuário não deve possuir uma conta registrada com o e-mail fornecido. <br> * O sistema deve estar online. |
+| **Passos** | 1. Acessar a página de Cadastro.<br> 2. Preencher os campos: nome, e-mail e senha.<br> 3. Clicar no botão "Criar conta". |
+| **Resultado Esperado** | A conta deve ser criada com sucesso e o sistema deve redirecionar para a página de boas-vindas ou dashboard, exibindo a mensagem "Conta criada com sucesso!".|
+
+### TC-USR-002: Alterar Senha
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Valida se o usuário consegue alterar sua senha com sucesso.|
+| **Entrada** | Senha atual: Teste@123 <br> Nova senha: NovaSenha@456|
+| **Pré-condições** | * O usuário deve estar logado.<br>* A senha atual deve ser válida. |
+| **Passos** | 1. Acessar o menu de Configurações da Conta.<br>2. Selecionar a opção "Alterar Senha".<br>3. Digitar a senha atual.<br> 4. Digitar e confirmar a nova senha.<br>5. Clicar em "Salvar".|
+| **Resultado Esperado** | Mensagem: "Senha alterada com sucesso." O sistema deve exigir a nova senha no próximo login.|
+
+### TC-USR-003: Atualizar Dados do Perfil
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica se o usuário consegue atualizar dados do perfil, como nome ou e-mail.|
+| **Entrada** | Nome atualizado: **Zezinho da silva**|
+| **Pré-condições** | * O usuário deve estar logado. |
+| **Passos** | 1. Acessar o menu Perfil.<br> 2. Editar pelo menos um campo.<br> 3. Clicar em "Salvar alterações".|
+| **Resultado Esperado** | O sistema exibe a mensagem "Dados atualizados com sucesso." Os novos dados devem ser refletidos imediatamente no perfil.|
+
+### TC-USR-004: Falha ao Fazer Login
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Testa se o sistema lida corretamente com tentativas de login inválidas.|
+| **Entrada** | E-mail: joao@email.com <br> Senha: SenhaErrada|
+| **Pré-condições** | * O usuário deve já possuir uma conta registrada. |
+| **Passos** | 1. Acessar a página de Login.<br>2. Digitar e-mail válido.<br>3. Digitar senha incorreta.<br> 4. Clicar em "Entrar".|
+| **Resultado Esperado** | O sistema deve exibir mensagem amigável: "E-mail ou senha incorretos. Tente novamente." O usuário não deve ser autenticado.|
+
+### TC-USR-005: Logout
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica se o usuário consegue encerrar sua sessão corretamente.|
+| **Entrada** | Sem entrada direta|
+| **Pré-condições** | * O usuário deve estar logado. |
+| **Passos** | 1. Clicar no menu do usuário.<br>2. Selecionar a opção "Sair" ou "Logout".|
+| **Resultado Esperado** | O sistema finaliza a sessão e redireciona o usuário para a tela de login ou página inicial pública.|
+                                                                
