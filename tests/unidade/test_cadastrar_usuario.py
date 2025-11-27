@@ -1,6 +1,6 @@
 import pytest
 from src.models.usuario import Usuario
-from src.services.cadastro_service import CadastroService
+from src.services.CadastroService import CadastroService
 
 class TestCadastroUsuario:
 
