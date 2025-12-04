@@ -1,2 +1,2 @@
-class usuario :
+class Usuario :
     pass
