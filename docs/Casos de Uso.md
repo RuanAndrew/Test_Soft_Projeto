@@ -43,3 +43,36 @@
 **REGRAS DE NEGÓCIO** <br>
 **(RN1)** Verificação de Posse Única: Um usuário não pode comprar um jogo que já esteja vinculado à sua conta (status COMPRADO).  
 **(RN2)** Liberação Imediata: Após a confirmação do pagamento, o status do jogo deve mudar para "COMPRADO" e o download deve ficar disponível imediatamente.
+
+---
+
+## UC02 – GERENCIAR BIBLIOTECA
+
+**DESCRIÇÃO SUCINTA:** O Cliente gerencia o ciclo de vida dos jogos adquiridos realizando download, instalação ou desinstalação
+
+**ATORES** 
+1. Cliente (Usuário Logado)
+
+**PRÉ-CONDIÇÕES** 
+1. Possuir jogos na conta (caso de uso "UC01 – Adquirir Jogo") 
+
+**FLUXO BÁSICO**
+1. O Cliente acessa a área "Minha Biblioteca".  
+2. O Sistema lista todos os jogos adquiridos pelo usuário.
+3. O Cliente localiza um jogo com status "NÃO INSTALADO"
+4. O Cliente seleciona a opção "Baixar/Instalar".  
+5. O Sistema simula o download e altera o status do jogo para "INSTALADO".  
+6. O Sistema habilita o botão "Jogar".  
+7. O caso de uso é encerrado.
+
+**FLUXOS ALTERNATIVOS**
+
+**(A1) Alternativa ao Passo 3 – Desinstalar Jogo** <br>
+1.a O Cliente seleciona um jogo que já possui status "INSTALADO".  
+1.b O Cliente seleciona a opção "Desinstalar".  
+1.c O Sistema remove o jogo e altera o status para "NÃO INSTALADO".  
+1.d O Sistema exibe a opção "Instalar".  
+1.e O caso de uso é encerrado.
+
+
+---
