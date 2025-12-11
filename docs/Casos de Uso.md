@@ -74,5 +74,40 @@
 1.d O Sistema exibe a opção "Instalar".  
 1.e O caso de uso é encerrado.
 
+---
+
+## UC03 – AUTENTICAR NO SISTEMA
+
+
+**DESCRIÇÃO SUCINTA:** Visitante fornece credenciais para acessar o sistema
+
+**ATORES** 
+1. Visitante
+
+**PRÉ-CONDIÇÕES** 
+1. O Sistema estar online.
+
+**FLUXO BÁSICO** 
+1. O Visitante acessa a tela de Login.  
+2. O Visitante informa e-mail e senha.  
+3. O Visitante seleciona "Entrar".  
+4. O Sistema valida as credenciais no banco de dados.  
+5. O Sistema redireciona o usuário para a Página Inicial (Catálogo) com perfil de Cliente.  
+6. O caso de uso é encerrado.
+
+**FLUXOS ALTERNATIVOS**
+
+**(A1) Alternativa ao Passo 4 – Credenciais Inválidas** <br>
+1.a O Sistema não encontra o e-mail ou a senha não confere.  
+1.b O Sistema exibe a mensagem "E-mail ou senha incorretos".  
+1.c O Sistema limpa o campo de senha e solicita nova tentativa.  
+1.d O caso de uso retorna ao Passo 2.
+
+**(A2) Alternativa ao Passo 1 – Usuário não cadastrado** <br>
+2.a O Visitante seleciona a opção "Criar Nova Conta".  
+2.b O Sistema executa o fluxo de Cadastro 
+2.c Após cadastro, o Sistema realiza o login automaticamente (retoma ao Passo 5)
+
+
 
 ---
