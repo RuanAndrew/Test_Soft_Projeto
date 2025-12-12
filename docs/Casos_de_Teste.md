@@ -45,15 +45,16 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Passos** | 1. O usuário acessa a página de detalhes do jogo **"Call of Duty®: Black Ops 7"**. <br> 2. O usuário clica no botão "Adicionar ao Carrinho". <br> 3. O usuário navega para a página do Carrinho de Compras. |
 | **Resultado Esperado** | O carrinho exibe o jogo **"Call of Duty®: Black Ops 7"**. <br> O ícone/contador do carrinho deve mostrar **(1)** item. <br> O total deve ser **R$ 349,90**. |
 
-### TC-CAR-002: Remoção de jogo do Carrinho
+### TC-CAR-002: Esvaziar Carrinho 
+**Técnica:** Análise de Valor Limite (AVL)
 
 | Item | Detalhe |
 | :--- | :--- |
-| **Descrição** | Verifica se um jogo é removido e se o carrinho é esvaziado, com o total zerado. |
-| **Entrada** | **Call of Duty®: Black Ops 7**  |
-| **Pré-condições** | * O usuário deve estar logado. <br> * O carrinho deve conter apenas o jogo **"Call of Duty®: Black Ops 7"**. |
-| **Passos** | 1. O usuário acessa a página do Carrinho. <br> 2. O usuário localiza o jogo **"Call of Duty®: Black Ops 7"**. <br> 3. O usuário clica no botão/ícone de "Remover" (X ou lixeira) para o item. <br> 4. O sistema atualiza o carrinho. |
-| **Resultado Esperado** | O jogo **"Call of Duty®: Black Ops 7"** é removido da lista. <br> O carrinho exibe a mensagem **"Seu carrinho está vazio"**. <br> O total é atualizado para **R$ 0,00**. |
+| **Descrição** | Verifica se um jogo é removido e se o carrinho é esvaziado (Testa o limite inferior do carrinho) |
+| **Entrada** | Ação de Remover Item. |
+| **Pré-condições** | Carrinho contendo exatamente **1 item**. |
+| **Passos** | 1. No carrinho, clicar no ícone de "Remover" |
+| **Resultado Esperado** | O item é removido da lista. <br> O carrinho exibe a mensagem **"Seu carrinho está vazio"**. <br> O total é atualizado para **R$ 0,00**. | |
 
 ### TC-CAR-003: Cálculo do Valor Total a Pagar
 
