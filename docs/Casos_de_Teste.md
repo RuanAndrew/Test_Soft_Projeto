@@ -8,25 +8,27 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 ---
 
 ## 🔎 Módulo: Catálogo (CAT)
-
-### TC-CAT-001: Busca de Jogo Existente e Ativo
-
-| Item | Detalhe |
-| :--- | :--- |
-| **Descrição** | Verificar busca de jogo existente e ativo. |
-| **Entrada** | **The Witcher 3** |
-| **Pré-condições** | * O sistema deve estar online. <br> * O jogo "The Witcher 3" deve estar cadastrado no banco de dados com status ativo. |
-| **Passos do Teste** | 1. Acessar a página principal da loja. <br> 2. Digitar na barra de pesquisa **"The Witcher 3"**. <br> 3. Pressionar a tecla "Enter" ou clicar no ícone de busca. |
-| **Resultado Esperado** | O sistema deve exibir uma lista contendo o card do **"The Witcher 3"**, mostrando título, preço e capa. |
-
-### TC-CAT-002: Busca por Termo Não Encontrado
+### TC-CAT-001: Busca de Jogo Existente e Ativo 
+**Técnica :** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
-| **Descrição** | Busca por termo não corresponde a nenhum jogo. |
-| **Entrada** | **Mineirinho Ultra Adventures** |
-| **Pré-condições** | * O sistema deve estar online. |
-| **Passos do Teste** | 1. Acessar a página principal da loja. <br> 2. Digitar na barra de pesquisa **"Mineirinho Ultra Adventures"**. <br> 3. Pressionar a tecla "Enter" ou clicar no ícone de busca. |
+| **Descrição** | Verificar busca com termo existente no banco (Classe Válida) |
+| **Entrada** | **"The Witcher 3"** |
+| **Pré-condições** | O jogo deve estar cadastrado e com status "Ativo". |
+| **Passos** | 1. Acessar a página principal. <br> 2. Digitar **"The Witcher 3"** e confirmar. |
+| **Resultado Esperado** | O sistema deve exibir o card do jogo **"The Witcher 3"** com preço e detalhes visíveis |
+
+### TC-CAT-002: Busca por Termo Não Encontrado 
+**Técnica :** Partição de Equivalência
+
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verificar busca com termo que não corresponde a nenhum jogo (Classe Inválida). |
+| **Entrada** | **"Mineirinho Ultra Adventures"** |
+| **Pré-condições** | O jogo NÃO deve existir no catálogo. |
+| **Passos** | 1. Acessar a página principal. <br> 2. Digitar **"Mineirinho Ultra Adventures"** e confirmar. |
 | **Resultado Esperado** | O sistema deve retornar uma lista vazia e exibir ao usuário a mensagem: **"Nenhum jogo encontrado para sua busca"**. |
 
 ---
