@@ -27,16 +27,15 @@ class TestModeloJogo:
 
         assert jogo.id == 2
         assert jogo.titulo == "Cyberpunk 2077"
-        assert jogo.preco == 0.0  # Default
-        assert jogo.status == "ativo"  # Default
-        assert jogo.descricao == ""  # Default
+        assert jogo.preco == 0.0
+        assert jogo.status == "ativo"
+        assert jogo.descricao == ""
 
     def test_comparacao_igualdade_por_id(self):
         """Teste de igualdade entre objetos Jogo baseado no ID"""
         jogo1 = Jogo(id=1, titulo="The Witcher 3", preco=99.99)
         jogo2 = Jogo(id=1, titulo="The Witcher 3: Wild Hunt", preco=49.99)
 
-        # Mesmo ID, consideram-se iguais
         assert jogo1 == jogo2
 
     def test_comparacao_desigualdade_por_id(self):
@@ -44,7 +43,6 @@ class TestModeloJogo:
         jogo1 = Jogo(id=1, titulo="The Witcher 3", preco=99.99)
         jogo2 = Jogo(id=2, titulo="The Witcher 3", preco=99.99)
 
-        # IDs diferentes, não são iguais
         assert jogo1 != jogo2
 
     def test_comparacao_com_objeto_diferente(self):
@@ -110,7 +108,7 @@ class TestModeloJogo:
 
     def test_descricao_longa(self):
         """Teste com descrição longa"""
-        descricao = "A" * 500  # Descrição com 500 caracteres
+        descricao = "A" * 500
         jogo = Jogo(id=1, titulo="Game", descricao=descricao)
 
         assert jogo.descricao == descricao

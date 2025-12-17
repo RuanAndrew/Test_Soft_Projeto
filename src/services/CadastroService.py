@@ -11,6 +11,9 @@ class CadastroService:
         }
 
     def alterar_senha(self, usuario):
+        if hasattr(usuario, 'senha_nova'):
+            usuario.senha = usuario.senha_nova
+
         self.repositorio.atualizar_usuario(usuario)
         return {
             "sucesso": True,
@@ -30,9 +33,9 @@ class CadastroService:
         }
 
     def fazer_login(self, usuario):
-        usuario_banco = self.repositorio.buscar_por_email(usuario.email_input)
+        usuario_banco = self.repositorio.buscar_usuario_por_email(usuario.email)
 
-        if usuario_banco and usuario.senha_input == usuario_banco.senha:
+        if usuario_banco and usuario.senha == usuario_banco.senha:
             return {"sucesso": True}
             
         return {"sucesso": False, "mensagem": "E-mail ou senha incorretos. Tente novamente."}

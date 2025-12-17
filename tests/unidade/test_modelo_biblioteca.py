@@ -103,7 +103,7 @@ class TestModeloBiblioteca:
 
         assert resultado is True
         assert jogo not in biblioteca.jogos_instalados
-        assert jogo in biblioteca.jogos_comprados  # Jogo continua comprado
+        assert jogo in biblioteca.jogos_comprados
 
     def test_desinstalar_jogo_nao_instalado(self):
         """Teste de tentativa de desinstalar um jogo não instalado"""
@@ -179,15 +179,12 @@ class TestModeloBiblioteca:
         biblioteca = Biblioteca(usuario_id=1)
         jogo = Jogo(id=1, titulo="The Witcher 3", preco=99.99)
 
-        # Compra
         assert biblioteca.adicionar_jogo(jogo) is True
         assert biblioteca.possui_jogo(jogo) is True
 
-        # Instalação
         assert biblioteca.instalar_jogo(jogo) is True
         assert jogo in biblioteca.listar_jogos_instalados()
 
-        # Desinstalação
         assert biblioteca.desinstalar_jogo(jogo) is True
         assert jogo not in biblioteca.listar_jogos_instalados()
         assert jogo in biblioteca.listar_jogos_comprados()
@@ -201,19 +198,16 @@ class TestModeloBiblioteca:
             Jogo(id=3, titulo="Elden Ring", preco=249.90),
         ]
 
-        # Compra todos
         for jogo in jogos:
             biblioteca.adicionar_jogo(jogo)
 
         assert len(biblioteca.listar_jogos_comprados()) == 3
 
-        # Instala alguns
         biblioteca.instalar_jogo(jogos[0])
         biblioteca.instalar_jogo(jogos[1])
 
         assert len(biblioteca.listar_jogos_instalados()) == 2
 
-        # Remove um
         biblioteca.remover_jogo(jogos[0])
 
         assert len(biblioteca.listar_jogos_comprados()) == 2

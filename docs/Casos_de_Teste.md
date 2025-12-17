@@ -31,6 +31,18 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Passos** | 1. Acessar a página principal. <br> 2. Digitar **"Mineirinho Ultra Adventures"** e confirmar. |
 | **Resultado Esperado** | O sistema deve retornar uma lista vazia e exibir ao usuário a mensagem: **"Nenhum jogo encontrado para sua busca"**. |
 
+### TC-CAT-003: Listagem Completa Dos Jogos Ativos No Catálogo
+**Técnica :** Partição de Equivalência
+
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica se a listagem completa do catálogo exibe apenas os jogos com status "ativo", ocultando os "inativos". |
+| **Entrada** | Ação de "Ver Todos os Jogos" |
+| **Pré-condições** | O banco deve conter jogos mistos (Ativos e Inativos). |
+| **Passos** | 1. Acessar a página catálogo. <br> 2. Solicitar listagem de todos os jogos. |
+| **Resultado Esperado** | O sistema deve retornar uma lista contendo apenas os jogos ativos. O jogo inativo não deve aparecer. |
+
 ---
 
 ## 🛒 Módulo: Carrinho (CAR)
@@ -65,6 +77,26 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Pré-condições** | * O usuário deve estar logado. <br> * O carrinho deve estar vazio. <br> * Ambos os jogos devem estar disponíveis. |
 | **Passos** | 1. O usuário adiciona o Jogo 1 ao carrinho. <br> 2. O usuário adiciona o Jogo 2 ao carrinho. <br> 3. O usuário acessa a página do Carrinho. |
 | **Resultado Esperado** | O campo **Total estimado** deve exibir o valor exato da soma dos preços: **R$ 396,89**. |
+
+### TC-CAR-004: Bloqueio de Compra de Jogo Já Adquirido
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Valida se o botão de compra é bloqueado ou se o sistema rejeita a adição ao carrinho de um jogo que o usuário já possui na biblioteca. |
+| **Entrada** | Ação "Adicionar ao Carrinho" no jogo "The Witcher 3" |
+| **Pré-condições** | Usuário JÁ POSSUI "The Witcher 3" na biblioteca com status "COMPRADO" ou "INSTALADO". |
+| **Passos** | 1. Acessar a página do catálogo ou detalhes do jogo "The Witcher 3". <br> 2. Tentar clicar no botão de adicionar ao carrinho.|
+| **Resultado Esperado** | O sistema deve impedir a ação.|
+
+### TC-CAR-005: Compra de Jogos Gratuitos
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Verifica o comportamento do cálculo total quando os itens custam R$ 0,00. |
+| **Entrada** | Jogo: "Free Game Demo" (Preço: R$ 0,00) |
+| **Pré-condições** | Carrinho vazio. |
+| **Passos** | 1. Adicionar o jogo gratuito ao carrinho. <br> 2. Ir para o checkout. |
+| **Resultado Esperado** | O Total a Pagar deve ser R$ 0,00. O botão de "Finalizar Compra" deve funcionar normalmente, sem exigir pagamento. |
 
 ---
 
@@ -164,3 +196,15 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Passos** | 1. Clicar no menu do usuário.<br>2. Selecionar a opção "Sair" ou "Logout".|
 | **Resultado Esperado** | O sistema finaliza a sessão e redireciona o usuário para a tela de login ou página inicial pública.|
                                                                 
+---                                                                                        
+## 🔄 Módulo: Sistema (SYS) - End-to-End
+
+### TC-SYS-001: Jornada Completa do Usuário (Critical Path)
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Valida o fluxo principal de valor do software: de um visitante desconhecido até um jogador com o jogo baixado. |
+| **Entrada** | Dados de novo usuário + Seleção de Jogo + Fluxo de Compra. |
+| **Pré-condições** | Banco de dados limpo para esse usuário (novo registro). |
+| **Passos** | 1. (USR) Registrar nova conta "GamerPro".<br> 2. (USR) Fazer Login.<br> 3. (CAT) Buscar por "Street Fighter".<br> 4. (CAR) Adicionar ao Carrinho e Validar Total.<br> 5. (CAR) Finalizar Compra.<br> 6. (LIB) Verificar se jogo aparece na Biblioteca com status "Comprado".<br> 7. (LIB) Clicar em "Baixar".|
+| **Resultado Esperado** | O fluxo não deve apresentar erros bloqueantes. Ao final, o jogo deve estar com status "Baixando/Instalado" e o saldo/histórico de compras atualizado. |
