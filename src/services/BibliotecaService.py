@@ -13,16 +13,14 @@ class BibliotecaService:
             }
         else: 
             return {
-            "sucesso": False,
-            "download_disponivel": False,
-            "mensagem": f"Parece que este jogo ainda não é seu! Adquira '{jogo.titulo}' na loja.",
-            "link_loja": f"/loja/jogo/{jogo.id}"
-        }
+                "sucesso": False,
+                "download_disponivel": False,
+                "mensagem": f"Parece que este jogo ainda não é seu! Adquira {jogo.titulo} na loja.",
+                "link_loja": f"/loja/jogo/{jogo.id}"
+            }
 
     def iniciar_download(self, usuario, jogo):
-        # possui_jogo = self.repositorio.verificar_posse(usuario.id, jogo.titulo)
-
-        possui_jogo = self.repositorio.verificar_posse.return_value = False
+        possui_jogo = self.repositorio.verificar_posse(usuario.id, jogo.titulo)
         
         if possui_jogo:
             return {
@@ -40,9 +38,3 @@ class BibliotecaService:
             "status_atual": "NAO_INSTALADO",
             "mensagem": "O jogo foi desinstalado com sucesso."
         }
-
-        # return {
-        #     "sucesso": True,
-        #     "status_atual": "NAO_INSTALADO",
-        #     "mensagem": "O jogo foi desinstalado com sucesso."
-        # }
