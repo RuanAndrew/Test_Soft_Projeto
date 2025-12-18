@@ -10,10 +10,12 @@
 **Legenda de Status:** Aberto, Em correção, Corrigido, Re-testar, Fechado
 
 **Resumo de Defeitos:**
-- Total de Defeitos Encontrados: **1**
+- Total de Defeitos Encontrados: **4**
 - Defeitos Críticos: **0**
-- Defeitos Altos: **0**
-- Defeitos Médios: **0**
-- Defeitos Baixos: **1**
-- Taxa de Resolução: **100%** (1/1 corrigido)
+- Defeitos Altos: **2** (BUG-002, BUG-004)
+- Defeitos Médios: **2** (BUG-003, BUG-004)
+- Defeitos Baixos: **1** (BUG-1)
+- Defeitos em Aberto: **3** (BUG-002, BUG-003, BUG-004)
+- Defeitos Corrigidos: **1** (BUG-1)
+- Taxa de Resolução: **25%** (1/4 corrigido)
 
