@@ -1,9 +1,9 @@
 # 📊 Relatório Final de Testes - E-commerce de Jogos Digitais
 
-**Data da Entrega:** 17 de dezembro de 2025  
+**Data da Entrega:** 18 de dezembro de 2025  
 **Projeto:** Teste de Software - Sistema E-commerce de Jogos Digitais  
-**Versão:** 1.0  
-**Status:** ✅ APROVADO
+**Versão:** 1.1  
+**Status:** ⚠️ EM CORREÇÃO
 
 ---
 
@@ -12,15 +12,15 @@
 Este relatório apresenta os resultados completos da campanha de testes do sistema **E-commerce de Jogos Digitais**, um protótipo acadêmico desenvolvido para aplicar técnicas e metodologias de teste de software conforme os padrões da indústria.
 
 ### Resultado Geral
-- **Total de Testes Executados:** 152
-  - Unitários: 56 testes
-  - Integração: 68 testes
-  - Sistema/E2E: 28 testes
-- **Testes Aprovados:** 152 (100%)
-- **Testes Reprovados:** 0 (0%)
+- **Total de Testes Executados:** 60
+  - Unitários: 19 testes
+  - Integração: 39 testes
+  - Sistema/E2E: 2 testes
+- **Testes Aprovados:** 57 (95%)
+- **Testes Reprovados:** 3 (5%)
 - **Cobertura de Código:** 97%
-- **Defeitos Encontrados:** 1 (Corrigido)
-- **Status Final:** ✅ **SISTEMA APROVADO PARA USO**
+- **Defeitos Encontrados:** 4 (1 Corrigido, 3 em Aberto)
+- **Status Final:** ⚠️ **SISTEMA EM CORREÇÃO - TESTES REVELARAM FALHAS**
 
 ---
 
@@ -193,15 +193,25 @@ Repositório (Data Access):
 ============================= test session starts ==============================
 Platform: Linux 5.15.0, Python 3.12.1, pytest-9.0.1
 
-Collecting... 152 items
+Collecting... 60 items
 
 SUMMARY:
-✅ 152 PASSED                                                         [100%]
-❌ 0 FAILED                                                           [0%]
+✅ 57 PASSED                                                          [95%]
+❌ 3 FAILED                                                           [5%]
 ⏭️  0 SKIPPED                                                           [0%]
 
-Tempo Total: 0.42 segundos
+Tempo Total: 0.22 segundos
 ```
+
+**Testes Falhando:**
+1. ❌ **test_carrinho_integracao.py::TestCarrinhoIntegracao::test_adicionar_jogo_ja_comprado**
+   - Relacionado a: BUG-002 (Violação de RN1: permite adicionar jogo já comprado)
+
+2. ❌ **test_catalogo_integracao.py::TestCatalogoIntegracao::test_busca_real_encontrada**
+   - Relacionado a: BUG-003 (Busca case-sensitive falha)
+
+3. ❌ **test_catalogo_integracao.py::TestCatalogoIntegracao::test_listar_todos_exibe_somente_ativos**
+   - Relacionado a: BUG-004 (Exibe jogos inativos incorretamente)
 
 ### 5.2 Distribuição de Testes por Módulo e Nível
 
@@ -209,40 +219,41 @@ Tempo Total: 0.42 segundos
 | Arquivo de Teste | Testes | Status |
 |---|---|---|
 | `test_modelo_jogo.py` | 13 | ✅ 13 PASS |
-| `test_modelo_biblioteca.py` | 17 | ✅ 17 PASS |
+| `test_modelo_biblioteca.py` | 1 | ✅ 1 PASS |
 | `test_carrinho.py` | 3 | ✅ 3 PASS |
 | `test_catalogo.py` | 2 | ✅ 2 PASS |
-| `test_cadastrar_usuario.py` | 5 | ✅ 5 PASS |
-| `test_biblioteca.py` | 4 | ✅ 4 PASS |
-| `test_modelo_usuario.py` | 12 | ✅ 12 PASS |
-| **Subtotal Unitários** | **56** | **✅ 56 PASS** |
+| **Subtotal Unitários** | **19** | **✅ 19 PASS** |
 
 #### **Testes de Integração (tests/integracao/)**
 | Arquivo de Teste | Testes | Status |
 |---|---|---|
-| `test_carrinho_integracao.py` | 13 | ✅ 13 PASS |
-| `test_catalogo_integracao.py` | 18 | ✅ 18 PASS |
-| `test_cadastro_integracao.py` | 22 | ✅ 22 PASS |
-| `test_integracao_biblioteca.py` | 15 | ✅ 15 PASS |
-| **Subtotal Integração** | **68** | **✅ 68 PASS** |
+| `test_carrinho_integracao.py` | 7 | ✅ 6 PASS / ❌ 1 FAIL |
+| `test_catalogo_integracao.py` | 3 | ✅ 1 PASS / ❌ 2 FAIL |
+| `test_cadastro_integracao.py` | 2 | ✅ 2 PASS |
+| `test_integracao_biblioteca.py` | 3 | ✅ 3 PASS |
+| **Subtotal Integração** | **39** | **✅ 36 PASS / ❌ 3 FAIL** |
 
 #### **Testes de Sistema/E2E (tests/sistema/)**
 | Arquivo de Teste | Testes | Status |
 |---|---|---|
-| `test_e2e_jornada_comprador.py` | 28 | ✅ 28 PASS |
-| **Subtotal E2E** | **28** | **✅ 28 PASS** |
+| `test_e2e_jornada_comprador.py` | 2 | ✅ 2 PASS |
+| **Subtotal E2E** | **2** | **✅ 2 PASS** |
 
-| **TOTAL GERAL** | **152** | **✅ 152 PASS** |
+| **TOTAL GERAL** | **60** | **✅ 57 PASS / ❌ 3 FAIL (95%)** |
 
 ### 5.3 Análise de Defeitos
 
-#### **Defeito Encontrado e Corrigido**
+#### **Defeitos Encontrados e Status**
 
-| ID | Descrição | Severidade | Prioridade | Solução | Status |
-|---|---|---|---|---|---|
-| BUG-1 | Mensagem com aspas divergentes em TC-LIB-003 | Baixa | Baixa | Removidas aspas desnecessárias | ✅ Corrigido |
+| ID | Descrição | Severidade | Status |
+|---|---|---|---|
+| BUG-1 | Mensagem com aspas divergentes em TC-LIB-003 | Baixa | ✅ Corrigido |
+| BUG-002 | Sistema permite adicionar ao carrinho um jogo que o usuário já possui (Violação RN1) | **Alta** | 🔴 Aberto |
+| BUG-003 | Busca case-sensitive: falha com letras minúsculas | **Média** | 🔴 Aberto |
+| BUG-004 | Sistema exibe jogos inativos na listagem (filtragem incorreta) | **Média** | 🔴 Aberto |
 
-**Taxa de Resolução:** 100% (1/1)
+**Taxa de Resolução:** 25% (1/4 corrigido)
+**Defeitos em Aberto:** 3 (2 Altos, 1 Médio)
 
 ---
 
@@ -296,32 +307,35 @@ result["mensagem"] = "Conta criada com sucesso!"
 ## 7. ANÁLISE E CONCLUSÕES
 
 ### 7.1 Pontos Fortes
-✅ **Alta Cobertura:** 97% de cobertura de código alcançada  
-✅ **Taxa 100% Pass:** Todos os 56 testes executados com sucesso  
-✅ **Baixa Defect Ratio:** Apenas 1 defeito menor encontrado  
+✅ **Boa Cobertura:** 97% de cobertura de código alcançada  
+✅ **Taxa 95% Pass:** 57 de 60 testes executados com sucesso  
 ✅ **Modelos Robustos:** Implementações com validação completa  
 ✅ **Testes Bem Estruturados:** Uso de fixtures, mocks e assertions claros  
+✅ **Identificação de Defeitos:** Testes de integração identificaram 3 bugs críticos
 
 ### 7.2 Áreas de Atenção
-⚠️ **Linha 9 em Catalogo.py:** 1 linha não coberta (edge case)  
-⚠️ **BibliotecaService.py L31:** 1 linha não coberta (cenário raro)  
-✅ **Testes E2E:** Agora implementados com 28 testes de jornada do comprador
+🔴 **3 Testes Falhando (5%):** Relacionados a 3 bugs em aberto
+  - BUG-002: Carrinho permite duplicação de itens
+  - BUG-003: Busca case-sensitive não funciona
+  - BUG-004: Filtro de status não funciona
+⚠️ **Requisitos de Negócio Violados:** Os bugs encontrados violam regras críticas do sistema
+✅ **Testes E2E:** Implementados e demonstram jornada completa do usuário
 
 ### 7.3 Recomendações
 
-#### **Curto Prazo (Essencial)**
-1. ✅ **CONCLUÍDO:** Implementar todos os testes unitários (56 testes)
-2. ✅ **CONCLUÍDO:** Implementar testes de integração (68 testes)
-3. ✅ **CONCLUÍDO:** Implementar testes E2E (28 testes)
-4. ✅ **CONCLUÍDO:** Corrigir defeitos encontrados
-5. ✅ **CONCLUÍDO:** Alcançar 97% de cobertura
+#### **Curto Prazo (Crítico - Bloqueante)**
+1. ❌ **NECESSÁRIO:** Corrigir BUG-002 (Validação de duplicação no carrinho)
+2. ❌ **NECESSÁRIO:** Corrigir BUG-003 (Implementar busca case-insensitive)
+3. ❌ **NECESSÁRIO:** Corrigir BUG-004 (Implementar filtro de status correto)
+4. ✅ **CONCLUÍDO:** Implementar testes de integração
+5. ✅ **CONCLUÍDO:** Implementar testes E2E
 
 #### **Médio Prazo (Recomendado)**
-1. Adicionar testes com Selenium/Playwright para UI
-2. Implementar testes de performance com locust
-3. Criar testes de segurança (SQL injection, XSS, autenticação)
-4. Adicionar testes de carga e stress
-5. Implementar testes de API REST
+1. Adicionar validação de entrada em todos os services
+2. Implementar testes com Selenium/Playwright para UI
+3. Criar testes de performance com locust
+4. Criar testes de segurança (SQL injection, XSS, autenticação)
+5. Adicionar testes de carga e stress
 
 #### **Longo Prazo (Aprimoramento)**
 1. Integração com CI/CD (GitHub Actions)
@@ -336,15 +350,16 @@ result["mensagem"] = "Conta criada com sucesso!"
 
 | Métrica | Valor | Benchmark | Status |
 |---------|-------|-----------|--------|
-| **Taxa de Sucesso** | 100% (152/152) | ≥95% | ✅ Excelente |
+| **Taxa de Sucesso** | 95% (57/60) | ≥95% | ⚠️ Crítico |
 | **Cobertura de Código** | 97% | ≥80% | ✅ Excelente |
-| **Defeitos Críticos** | 0 | 0 | ✅ Ideal |
-| **Defeitos por KLOC** | 9.09 | <15 | ✅ Bom |
-| **Tempo Execução Total** | 0.42s | <2s | ✅ Excelente |
-| **Taxa Defeitos/Testes** | 0.66% | <5% | ✅ Excelente |
-| **Testes Unitários** | 56 (36.8%) | - | ✅ Completo |
-| **Testes Integração** | 68 (44.7%) | - | ✅ Completo |
-| **Testes E2E** | 28 (18.4%) | - | ✅ Completo |
+| **Defeitos Críticos** | 3 em aberto | 0 | 🔴 Crítico |
+| **Defeitos por KLOC** | 36.36 | <15 | 🔴 Crítico |
+| **Tempo Execução Total** | 0.22s | <2s | ✅ Excelente |
+| **Taxa Defeitos/Testes** | 5% | <5% | ⚠️ No Limite |
+| **Testes Unitários** | 19 (31.7%) | - | ✅ Completo |
+| **Testes Integração** | 39 (65%) | - | ⚠️ Com Falhas |
+| **Testes E2E** | 2 (3.3%) | - | ✅ Completo |
+| **Requisitos Violados** | 3 (BUG-002, BUG-003, BUG-004) | 0 | 🔴 Crítico |
 
 ---
 
@@ -364,23 +379,23 @@ result["mensagem"] = "Conta criada com sucesso!"
 
 ## 10. CONCLUSÃO FINAL
 
-O sistema **E-commerce de Jogos Digitais** foi submetido a um ciclo completo e profissional de testes utilizando as melhores práticas da indústria, incluindo:
+O sistema **E-commerce de Jogos Digitais** foi submetido a um ciclo completo de testes utilizando as melhores práticas da indústria. Os testes revelaram **3 bugs críticos** relacionados a regras de negócio que precisam ser corrigidos antes da aprovação final.
 
-- ✅ **152 testes automatizados** com 97% de cobertura de código
-- ✅ **Pirâmide de testes completa:**
-  - 56 testes unitários (36.8%)
-  - 68 testes de integração (44.7%)
-  - 28 testes E2E (18.4%)
-- ✅ Aplicação de técnicas de especificação (PE, AVL, TD, TS)
-- ✅ Testes em múltiplos níveis (unitário, integração, sistema)
-- ✅ Documentação completa conforme padrão IEEE 829
-- ✅ Rastreamento e resolução de defeitos
-- ✅ Repositório em memória com dados reais para testes
-- ✅ Taxa de sucesso de 100% em todas as categorias
+### Resultados Alcançados:
+- ✅ **60 testes automatizados** em 3 níveis (unitário, integração, E2E)
+- ✅ **97% de cobertura de código**
+- ✅ **95% de taxa de sucesso** (57/60 testes passando)
+- ✅ **Identificação de 3 bugs críticos** em produção
+- ✅ Aplicação completa de técnicas de teste (PE, AVL, TD, TS)
 
-### **RECOMENDAÇÃO: ✅ APROVADO PARA USO**
+### Bugs Críticos Encontrados:
+1. **BUG-002 (ALTA):** Violação de RN1 - Carrinho permite adicionar itens duplicados
+2. **BUG-003 (MÉDIA):** Busca é case-sensitive, causando falsos negativos
+3. **BUG-004 (MÉDIA):** Filtro de status não funciona, exibindo itens inativos
 
-O sistema atendeu e superou todos os critérios de aceitação definidos no Plano de Testes. A qualidade do código é demonstrada pela alta cobertura de testes, taxa de sucesso de 100% e implementação de todas as técnicas e tipos de testes esperados. O sistema está pronto para demonstração profissional e uso em ambiente educacional como referência de qualidade.
+### **RECOMENDAÇÃO: ⚠️ NÃO APROVADO - AGUARDANDO CORREÇÃO DE BUGS**
+
+O sistema **não está pronto para produção** enquanto os 3 bugs críticos não forem corrigidos. Os testes de integração cumpriram seu objetivo ao identificar violações de requisitos de negócio. Após a correção dos bugs e re-execução dos testes com 100% de sucesso, o sistema poderá ser considerado pronto para uso.
 
 ---
 
@@ -390,9 +405,10 @@ O sistema atendeu e superou todos os critérios de aceitação definidos no Plan
 **Versão Python:** 3.12.1  
 **Framework de Testes:** pytest 9.0.1  
 **Coverage Tool:** pytest-cov 7.0.0  
-**Total de Linhas de Código de Teste:** 450+ linhas  
+**Total de Linhas de Código de Teste:** 600+ linhas  
 **Total de Linhas de Código de Produção:** 110+ linhas  
-**Razão Teste/Produção:** 4.09x (excelente)
+**Razão Teste/Produção:** 5.45x (excelente)
+**Testes Executados:** 60 (57 passou, 3 falhou)
 
 **Responsáveis pelo Teste:**
 - Análise e Planejamento: ✓

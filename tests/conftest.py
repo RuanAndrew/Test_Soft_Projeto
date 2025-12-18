@@ -1,5 +1,11 @@
+import sys
+import os
 import pytest
 from unittest.mock import MagicMock
+
+# Adicionar o diretório raiz ao path para imports absolutos funcionarem
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.services.BibliotecaService import BibliotecaService
 from src.services.CadastroService import CadastroService
 from src.services.CatalogoService import CatalogoService

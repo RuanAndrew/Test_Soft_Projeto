@@ -1,5 +1,5 @@
 import pytest
-from src.models.Usuario import Usuario
+from src.models.usuario import Usuario
 from src.models.Jogo import Jogo
 
 class TestSistemaE2E:
