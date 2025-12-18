@@ -48,6 +48,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 ## 🛒 Módulo: Carrinho (CAR)
 
 ### TC-CAR-001: Adição de jogo para compra
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -69,6 +70,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O item é removido da lista. <br> O carrinho exibe a mensagem **"Seu carrinho está vazio"**. <br> O total é atualizado para **R$ 0,00**. | |
 
 ### TC-CAR-003: Cálculo do Valor Total a Pagar
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -79,6 +81,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O campo **Total estimado** deve exibir o valor exato da soma dos preços: **R$ 396,89**. |
 
 ### TC-CAR-004: Bloqueio de Compra de Jogo Já Adquirido
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -89,6 +92,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O sistema deve impedir a ação.|
 
 ### TC-CAR-005: Compra de Jogos Gratuitos
+**Técnica:** Análise de Valor Limite (AVL)
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -103,6 +107,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 ## 📚 Módulo: Biblioteca do Usuário (LIB)
 
 ### TC-LIB-001: Visualização de Jogo Comprado
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -113,6 +118,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O card do jogo **"Cyberpunk 2077"** deve estar visível na lista e a opção "Baixar" ou "Jogar" |
 
 ### TC-LIB-002: Baixar/Jogar
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -123,6 +129,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O botão "Baixar/Jogar" deve estar **ativo**. <br> Ao clicar, o sistema deve iniciar o download ou abrir o jogo  |
 
 ### TC-LIB-003: Busca por Jogo Não Adquirido
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -134,6 +141,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 
 
 ### TC-LIB-004: Desinstalação de Jogo
+**Técnica:** Transição de Estados (instalado -> desinstalado)
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -147,6 +155,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 ## 👤 Módulo: Conta do Usuário (USR)
 
 ### TC-USR-001: Criar Nova Conta
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -157,6 +166,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | A conta deve ser criada com sucesso e o sistema deve redirecionar para a página de boas-vindas ou dashboard, exibindo a mensagem "Conta criada com sucesso!".|
 
 ### TC-USR-002: Alterar Senha
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -167,6 +177,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | Mensagem: "Senha alterada com sucesso." O sistema deve exigir a nova senha no próximo login.|
 
 ### TC-USR-003: Atualizar Dados do Perfil
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -177,6 +188,7 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O sistema exibe a mensagem "Dados atualizados com sucesso." Os novos dados devem ser refletidos imediatamente no perfil.|
 
 ### TC-USR-004: Falha ao Fazer Login
+**Técnica:** Partição de Equivalência
 
 | Item | Detalhe |
 | :--- | :--- |
@@ -187,11 +199,12 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Resultado Esperado** | O sistema deve exibir mensagem amigável: "E-mail ou senha incorretos. Tente novamente." O usuário não deve ser autenticado.|
 
 ### TC-USR-005: Logout
+**Técnica:** Transição de Estados (logado -> deslogado)
 
 | Item | Detalhe |
 | :--- | :--- |
 | **Descrição** | Verifica se o usuário consegue encerrar sua sessão corretamente.|
-| **Entrada** | Sem entrada direta|
+| **Entrada** | Ação de Logout (Encerrar Sessão)|
 | **Pré-condições** | * O usuário deve estar logado. |
 | **Passos** | 1. Clicar no menu do usuário.<br>2. Selecionar a opção "Sair" ou "Logout".|
 | **Resultado Esperado** | O sistema finaliza a sessão e redireciona o usuário para a tela de login ou página inicial pública.|
@@ -199,7 +212,8 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 ---                                                                                        
 ## 🔄 Módulo: Sistema (SYS) - End-to-End
 
-### TC-SYS-001: Jornada Completa do Usuário (Critical Path)
+### TC-SYS-001: Jornada Completa do Usuário 
+Técnica baseada nos casos de uso UC01, UC02, UC03
 
 | Item | Detalhe |
 | :--- | :--- |
