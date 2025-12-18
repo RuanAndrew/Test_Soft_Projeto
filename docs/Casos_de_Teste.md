@@ -102,6 +102,58 @@ Exemplo: TC-CAT-001. Onde "TC" é a abreviação de "Test Case"
 | **Passos** | 1. Adicionar o jogo gratuito ao carrinho. <br> 2. Ir para o checkout. |
 | **Resultado Esperado** | O Total a Pagar deve ser R$ 0,00. O botão de "Finalizar Compra" deve funcionar normalmente, sem exigir pagamento. |
 
+### TC-CAR-006: Validação de Adição ao Carrinho com Múltiplas Condições
+**Técnica:** Tabela de Decisão
+
+| Item | Detalhe |
+| :--- | :--- |
+| **Descrição** | Valida a funcionalidade de adição de jogo ao carrinho considerando múltiplas condições simultâneas através de Tabela de Decisão. |
+| **Pré-condições** | * O sistema deve possuir jogos cadastrados no catálogo (ativos e inativos). <br> * Deve existir usuários cadastrados com diferentes estados (com e sem jogos comprados). <br> * O sistema deve permitir estados de carrinho vazio e com itens. |
+| **Tabela de Decisão** | Ver tabela abaixo com todas as combinações de condições e regras de decisão. |
+
+#### Tabela de Decisão - Condições e Regras
+
+**Condições:**
+- **C1:** Jogo está ativo no catálogo?
+- **C2:** Usuário já possui o jogo?
+- **C3:** Jogo já está no carrinho?
+- **C4:** Usuário está autenticado?
+
+| Regra | C1: Jogo Ativo | C2: Usuário Possui | C3: Já no Carrinho | C4: Autenticado | Ação | Mensagem |
+| :--- | :---: | :---: | :---: | :---: | :--- | :--- |
+| **R1** | ❌ Não | - | - | - | 🚫 Bloquear | "Este jogo não está disponível no catálogo." |
+| **R2** | - | - | - | ❌ Não | 🚫 Bloquear | "Você precisa estar logado para adicionar jogos ao carrinho." |
+| **R3** | ✅ Sim | - | ✅ Sim | ✅ Sim | 🚫 Bloquear | "Este jogo já está no seu carrinho." |
+| **R4** | ✅ Sim | ✅ Sim | ❌ Não | ✅ Sim | 🚫 Bloquear | "Você já possui este jogo na sua biblioteca." |
+| **R5** | ✅ Sim | ❌ Não | ❌ Não | ✅ Sim | ✅ Permitir | Jogo adicionado com sucesso ao carrinho. |
+
+#### Entradas de Teste
+
+| Cenário | Regra | Jogo | Estado do Jogo | Estado do Usuário | Estado do Carrinho | Autenticação |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **CT-01** | R1 | "Jogo Inativo" | Status: Inativo | Logado | Vazio | ✅ Autenticado |
+| **CT-02** | R2 | "The Witcher 3" | Status: Ativo | Não logado | Vazio | ❌ Não autenticado |
+| **CT-03** | R3 | "Hollow Knight" | Status: Ativo | Logado | Já contém "Hollow Knight" | ✅ Autenticado |
+| **CT-04** | R4 | "Cyberpunk 2077" | Status: Ativo | Logado (possui o jogo) | Vazio | ✅ Autenticado |
+| **CT-05** | R5 | "Call of Duty®: Black Ops 7" | Status: Ativo | Logado (não possui) | Vazio | ✅ Autenticado |
+
+#### Passos de Execução (Aplicável a todos os cenários)
+
+1. Preparar o ambiente conforme o estado descrito na tabela de Entradas de Teste.
+2. Acessar a página de detalhes do jogo especificado no cenário.
+3. Clicar no botão "Adicionar ao Carrinho".
+4. Observar o comportamento do sistema.
+
+#### Resultados Esperados
+
+| Cenário | Resultado Esperado |
+| :--- | :--- |
+| **CT-01 (R1)** | O sistema deve bloquear a ação e exibir a mensagem: **"Este jogo não está disponível no catálogo."** O jogo não deve ser adicionado ao carrinho. |
+| **CT-02 (R2)** | O sistema deve bloquear a ação e exibir a mensagem: **"Você precisa estar logado para adicionar jogos ao carrinho."** O usuário deve ser redirecionado para a tela de login. |
+| **CT-03 (R3)** | O sistema deve bloquear a ação e exibir a mensagem: **"Este jogo já está no seu carrinho."** O jogo não deve ser duplicado no carrinho. |
+| **CT-04 (R4)** | O sistema deve bloquear a ação e exibir a mensagem: **"Você já possui este jogo na sua biblioteca."** O botão deve ser substituído por "Jogar/Instalar agora" conforme RN1. |
+| **CT-05 (R5)** | O sistema deve permitir a adição. O jogo deve aparecer no carrinho, o contador deve ser atualizado e uma mensagem de sucesso deve ser exibida: **"Jogo adicionado ao carrinho com sucesso!"** |
+
 ---
 
 ## 📚 Módulo: Biblioteca do Usuário (LIB)
